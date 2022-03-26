@@ -3,4 +3,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_favorite_description">Agregar Favorito</string>
+    <string name="hint_url_image">Url Imagen</string>
+    <string name="hint_title">Titulo</string>
+    <string name="hint_year">Anio</string>
+    <string name="hint_duration">Duracion</string>
+    <string name="hint_summary">Resumen</string>
 </resources>

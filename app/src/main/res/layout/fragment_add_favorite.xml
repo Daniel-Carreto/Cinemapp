@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    tools:context=".AddFavoriteFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilImage"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_url_image"
+        app:boxStrokeErrorColor="@color/secondary_dark_color"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+        app:counterTextColor="@color/secondary_dark_color"
+        app:errorTextColor="@color/black"
+        app:helperText="*Requerido"
+        app:helperTextTextColor="@color/error_color">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilTitle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_title"
+        app:boxStrokeErrorColor="@color/secondary_dark_color"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+        app:counterTextColor="@color/secondary_dark_color"
+        app:errorTextColor="@color/black"
+        app:helperText="*Requerido"
+        app:helperTextTextColor="@color/error_color">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilYear"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_year"
+        app:boxStrokeErrorColor="@color/secondary_dark_color"
+        app:counterEnabled="true"
+        app:counterMaxLength="4"
+        app:counterTextColor="@color/secondary_dark_color"
+        app:errorTextColor="@color/black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilDuration"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_duration"
+        app:boxStrokeErrorColor="@color/secondary_dark_color"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+        app:counterTextColor="@color/secondary_dark_color"
+        app:errorTextColor="@color/black"
+        app:helperText="*Requerido"
+        app:helperTextTextColor="@color/error_color">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietDuration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSummary"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_summary"
+        app:boxStrokeErrorColor="@color/secondary_dark_color"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
+        app:counterTextColor="@color/secondary_dark_color"
+        app:errorTextColor="@color/black"
+        app:helperTextTextColor="@color/error_color">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</LinearLayout>
+
+
+    <!--<com.google.android.material.textfield.TextInputLayout-->
+    <!--style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:hint="@string/hint_url_image"-->
+    <!--app:counterEnabled="true"-->
+    <!--app:counterMaxLength="50">-->
+
+    <!--<com.google.android.material.textfield.TextInputEditText-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="wrap_content" />-->
+    <!--</com.google.android.material.textfield.TextInputLayout>-->
+
+    <!--<com.google.android.material.textfield.TextInputLayout-->
+    <!--style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:hint="@string/hint_url_image"-->
+    <!--app:counterEnabled="true"-->
+    <!--app:counterMaxLength="50">-->
+
+    <!--<com.google.android.material.textfield.TextInputEditText-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="wrap_content" />-->
+    <!--</com.google.android.material.textfield.TextInputLayout>-->
+
+    <!--<com.google.android.material.textfield.TextInputLayout-->
+    <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:hint="@string/hint_url_image"-->
+    <!--app:counterEnabled="true"-->
+    <!--app:counterMaxLength="50">-->
+
+    <!--<com.google.android.material.textfield.TextInputEditText-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="wrap_content" />-->
+    <!--</com.google.android.material.textfield.TextInputLayout>-->
+
+
+    <!--<com.google.android.material.textfield.TextInputLayout-->
+    <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:hint="@string/hint_url_image"-->
+    <!--app:counterEnabled="true"-->
+    <!--app:counterMaxLength="10"-->
+    <!--app:errorTextColor="@color/black"-->
+    <!--app:helperText="*Requerido"-->
+    <!--app:helperTextTextColor="@color/error_color"-->
+    <!--app:boxStrokeErrorColor="@color/secondary_dark_color"-->
+    <!--app:boxCornerRadiusBottomStart="28dp"-->
+    <!--app:boxCornerRadiusBottomEnd="28dp"-->
+    <!--app:boxCornerRadiusTopStart="28dp"-->
+    <!--app:boxCornerRadiusTopEnd="28dp"-->
+    <!--app:startIconDrawable="@drawable/ic_add"-->
+    <!--app:counterTextColor="@color/secondary_dark_color">-->
+
+    <!--<com.google.android.material.textfield.TextInputEditText-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:inputType="text"/>-->
+    <!--</com.google.android.material.textfield.TextInputLayout>-->
+
+    <!--<com.google.android.material.textfield.TextInputLayout-->
+    <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:hint="@string/hint_url_image"-->
+    <!--app:counterEnabled="true"-->
+    <!--app:counterMaxLength="10"-->
+    <!--app:errorTextColor="@color/black"-->
+    <!--app:helperText="*Requerido"-->
+    <!--app:helperTextTextColor="@color/error_color"-->
+    <!--app:boxStrokeErrorColor="@color/secondary_dark_color"-->
+    <!--app:counterTextColor="@color/secondary_dark_color">-->
+
+    <!--<com.google.android.material.textfield.TextInputEditText-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:inputType="text"/>-->
+    <!--</com.google.android.material.textfield.TextInputLayout>-->
+
+    <!--<com.google.android.material.textfield.TextInputLayout-->
+    <!--style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:hint="@string/hint_url_image"-->
+    <!--app:counterEnabled="true"-->
+    <!--app:endIconMode="password_toggle"-->
+    <!--app:counterMaxLength="50">-->
+
+    <!--<com.google.android.material.textfield.TextInputEditText-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:inputType="textPassword"/>-->
+    <!--</com.google.android.material.textfield.TextInputLayout>-->

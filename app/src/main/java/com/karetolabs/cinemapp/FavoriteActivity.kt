@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.karetolabs.cinemapp.databinding.ActivityFavoriteBinding
 
-class FavoriteActivity : AppCompatActivity() {
+class FavoriteActivity : AppCompatActivity(), FavoriteFragment.FavoriteFragmentListener {
 
     private lateinit var activityFavoriteBinding: ActivityFavoriteBinding
 
@@ -13,5 +13,12 @@ class FavoriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityFavoriteBinding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(activityFavoriteBinding.root)
+    }
+
+    override fun addFavoriteEvent() {
+        supportFragmentManager.beginTransaction()
+            .replace(activityFavoriteBinding.containerFavorite.id, AddFavoriteFragment())
+            .addToBackStack(null)
+            .commit()
     }
 }
