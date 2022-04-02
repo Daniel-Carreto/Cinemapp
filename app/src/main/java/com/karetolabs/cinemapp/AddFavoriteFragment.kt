@@ -10,6 +10,7 @@ import android.provider.OpenableColumns
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.ContextThemeWrapper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ import android.widget.DatePicker
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
@@ -206,6 +208,27 @@ class AddFavoriteFragment : Fragment() {
                     android.Manifest.permission.READ_EXTERNAL_STORAGE
                 )
             )
+        }
+        fragmentAddFavoriteBinding.toolbar.apply {
+            setTitle("Agregar Favorito")
+            setTitleTextColor(
+                ContextCompat.getColor(requireActivity(), R.color.white)
+            )
+            setNavigationIcon(
+                ContextCompat.getDrawable(requireActivity(), R.drawable.ic_add)
+            )
+            setNavigationOnClickListener {
+                activity?.onBackPressed()
+            }
+            //inflateMenu(R.menu.add_favorite_menu)
+            setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.action_save ->{
+                        validateFields()
+                    }
+                }
+                true
+            }
         }
 
     }

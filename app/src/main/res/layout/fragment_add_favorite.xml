@@ -1,161 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:menu="@menu/add_favorite_menu"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".AddFavoriteFragment">
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <ImageView
-            android:id="@+id/ivPoster"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_image"
-            android:contentDescription="@null" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilImage"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_url_image"
-            app:boxStrokeErrorColor="@color/secondary_dark_color"
-            app:helperText="ww.example.com"
-            app:helperTextTextColor="@color/primary_color">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".AddFavoriteFragment">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietImage"
+            <ImageView
+                android:id="@+id/ivPoster"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_image" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilImage"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textWebEditText" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:hint="@string/hint_url_image"
+                app:boxStrokeErrorColor="@color/secondary_dark_color"
+                app:helperText="ww.example.com"
+                app:helperTextTextColor="@color/primary_color">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilTitle"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/hint_title"
-            app:boxStrokeErrorColor="@color/secondary_dark_color"
-            app:counterEnabled="true"
-            app:counterMaxLength="50"
-            app:counterTextColor="@color/secondary_dark_color"
-            app:errorTextColor="@color/black"
-            app:helperText="*Requerido"
-            app:helperTextTextColor="@color/error_color">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textWebEditText" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietTitle"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilTitle"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="8dp"
+                android:hint="@string/hint_title"
+                app:boxStrokeErrorColor="@color/secondary_dark_color"
+                app:counterEnabled="true"
+                app:counterMaxLength="50"
+                app:counterTextColor="@color/secondary_dark_color"
+                app:errorTextColor="@color/black"
+                app:helperText="*Requerido"
+                app:helperTextTextColor="@color/error_color">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilYear"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/hint_year"
-            app:boxStrokeErrorColor="@color/secondary_dark_color"
-            app:counterEnabled="true"
-            app:counterMaxLength="4"
-            app:counterTextColor="@color/secondary_dark_color"
-            app:errorTextColor="@color/black">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietYear"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilYear"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusableInTouchMode="false"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="8dp"
+                android:hint="@string/hint_year"
+                app:boxStrokeErrorColor="@color/secondary_dark_color"
+                app:counterEnabled="true"
+                app:counterMaxLength="4"
+                app:counterTextColor="@color/secondary_dark_color"
+                app:errorTextColor="@color/black">
 
-        <Spinner
-            android:id="@+id/spinnerGenre"
-            style="@style/Widget.AppCompat.Spinner.DropDown"
-            android:layout_width="match_parent"
-            android:visibility="gone"
-            android:layout_height="50dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietYear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="false"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilGenre"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/hint_genre">
+            <Spinner
+                android:id="@+id/spinnerGenre"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:visibility="gone" />
 
-            <AutoCompleteTextView
-                android:id="@+id/tietGenre"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilGenre"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="8dp"
+                android:hint="@string/hint_genre">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilDuration"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/hint_duration"
-            app:boxStrokeErrorColor="@color/secondary_dark_color"
-            app:counterTextColor="@color/secondary_dark_color"
-            app:errorTextColor="@color/black">
+                <AutoCompleteTextView
+                    android:id="@+id/tietGenre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietDuration"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDuration"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="8dp"
+                android:hint="@string/hint_duration"
+                app:boxStrokeErrorColor="@color/secondary_dark_color"
+                app:counterTextColor="@color/secondary_dark_color"
+                app:errorTextColor="@color/black">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilSummary"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/hint_summary"
-            app:boxStrokeErrorColor="@color/secondary_dark_color"
-            app:counterEnabled="true"
-            app:counterMaxLength="500"
-            app:counterTextColor="@color/secondary_dark_color"
-            app:errorTextColor="@color/black"
-            app:helperTextTextColor="@color/error_color">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietSummary"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilSummary"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:maxLength="500" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="8dp"
+                android:hint="@string/hint_summary"
+                app:boxStrokeErrorColor="@color/secondary_dark_color"
+                app:counterEnabled="true"
+                app:counterMaxLength="500"
+                app:counterTextColor="@color/secondary_dark_color"
+                app:errorTextColor="@color/black"
+                app:helperTextTextColor="@color/error_color">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSave"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guardar"
-            android:textAllCaps="false"
-            app:cornerRadius="28dp"
-            app:icon="@drawable/ic_add"
-            app:rippleColor="@color/secondary_color"
-            tools:text="SaVe" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietSummary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:maxLength="500" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
-</ScrollView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSave"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guardar"
+                android:textAllCaps="false"
+                app:cornerRadius="28dp"
+                app:icon="@drawable/ic_add"
+                app:rippleColor="@color/secondary_color"
+                tools:text="SaVe" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
     <!--<com.google.android.material.textfield.TextInputLayout-->
