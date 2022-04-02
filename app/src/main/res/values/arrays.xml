@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string-array name="option_image">
+        <item>@string/option_gallery</item>
+        <item>@string/option_camera</item>
+    </string-array>
+</resources>

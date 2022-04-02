@@ -9,4 +9,6 @@
     <string name="hint_duration">Duracion</string>
     <string name="hint_summary">Resumen</string>
     <string name="hint_genre">Genero</string>
+    <string name="option_gallery">Galeria</string>
+    <string name="option_camera">Camara</string>
 </resources>
