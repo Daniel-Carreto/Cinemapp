@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.karetolabs.cinemapp.databinding.FragmentFavoriteBinding
 
 class FavoriteFragment : Fragment() {
@@ -33,6 +36,19 @@ class FavoriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         fragmentFavoriteBinding.fabAddFavorite.setOnClickListener {
             favoriteFragmentListener?.addFavoriteEvent()
+        }
+        val favoriteAdapter = FavoriteAdapter(FavoriteProvider.favorites)
+        //LinearLayoutManager(requireActivity())
+        //LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        //LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, true)
+        //LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, true)
+        //StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        //StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL)
+        //GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, false)
+        //GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, true)
+        fragmentFavoriteBinding.rvFavorites.apply {
+            layoutManager = GridLayoutManager(requireActivity(), 2, GridLayoutManager.HORIZONTAL, false)
+            adapter = favoriteAdapter
         }
     }
 
