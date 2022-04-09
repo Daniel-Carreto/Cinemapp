@@ -44,6 +44,7 @@ class AddFavoriteFragment : Fragment() {
 
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
     private var uriFile: Uri? = null
+    private var idGenero:Long = 0
 
     private val getGalleryContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
@@ -140,11 +141,18 @@ class AddFavoriteFragment : Fragment() {
         ///Spinners
         val genres =
             listOf<String>("Selecciona el genero", "Romantico", "Comedia", "Sci-Fi", "Terror")
-        val adapterGenres = ArrayAdapter<String>(
+        /*val adapterGenres = ArrayAdapter<String>(
             requireActivity(),
             android.R.layout.simple_spinner_dropdown_item,
             genres
+        )*/
+        val list = listOf<Genero>(
+            Genero(0,"Romantico"),
+            Genero(1,"Comedia"),
+            Genero(2,"Sci-Fi"),
+            Genero(3,"Terror")
         )
+        val adapterGenres = SpinnerAdapter(requireActivity(),R.layout.item_genero, list)
         fragmentAddFavoriteBinding.spinnerGenre.adapter = adapterGenres
         fragmentAddFavoriteBinding.spinnerGenre.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -174,6 +182,8 @@ class AddFavoriteFragment : Fragment() {
                     position: Int,
                     id: Long
                 ) {
+                    fragmentAddFavoriteBinding.tietGenre.setText(list[position].title)
+                    idGenero = list[position].id
                     showMessage(genres[position])
                 }
 
