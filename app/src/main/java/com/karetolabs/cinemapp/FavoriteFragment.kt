@@ -9,7 +9,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.karetolabs.cinemapp.data.local.MovieDatabase
 import com.karetolabs.cinemapp.databinding.FragmentFavoriteBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FavoriteFragment : Fragment() {
 
@@ -37,7 +42,7 @@ class FavoriteFragment : Fragment() {
         fragmentFavoriteBinding.fabAddFavorite.setOnClickListener {
             favoriteFragmentListener?.addFavoriteEvent()
         }
-        val favoriteAdapter = FavoriteAdapter(FavoriteProvider.favorites)
+       /* val favoriteAdapter = FavoriteAdapter(FavoriteProvider.favorites)
         favoriteAdapter.onItemClickListener = object: OnItemClickListener<Favorite>{
             override fun onItemSelected(item: Favorite) {
                 favoriteFragmentListener?.addDetailEvent(item)
@@ -54,6 +59,45 @@ class FavoriteFragment : Fragment() {
         fragmentFavoriteBinding.rvFavorites.apply {
             layoutManager = GridLayoutManager(requireActivity(), 2, GridLayoutManager.HORIZONTAL, false)
             adapter = favoriteAdapter
+        }*/
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadData()
+    }
+
+
+    private fun loadData(){
+        CoroutineScope(Dispatchers.IO).launch{
+            val database = MovieDatabase.getDatabase(requireActivity())
+            val favorites = database.favoriteDao().getAllFavorites()
+            withContext(Dispatchers.Main){
+                val listFavorites = favorites?.map { favorite ->
+                    Favorite(
+                        favorite.id,
+                        favorite.title,
+                        favorite.urlImage,
+                        favorite.summary,
+                        favorite.year,
+                        favorite.genre,
+                        favorite.duration,
+                        favorite.uriImage
+                    )
+                }
+
+
+                val favoriteAdapter = FavoriteAdapter(listFavorites?: arrayListOf())
+                favoriteAdapter.onItemClickListener = object: OnItemClickListener<Favorite>{
+                    override fun onItemSelected(item: Favorite) {
+                        favoriteFragmentListener?.addDetailEvent(item)
+                    }
+                }
+                fragmentFavoriteBinding.rvFavorites.apply {
+                    layoutManager = GridLayoutManager(requireActivity(), 2, GridLayoutManager.HORIZONTAL, false)
+                    adapter = favoriteAdapter
+                }
+            }
         }
     }
 

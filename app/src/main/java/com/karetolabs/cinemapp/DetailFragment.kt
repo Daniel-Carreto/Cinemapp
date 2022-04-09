@@ -8,7 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.karetolabs.cinemapp.data.local.MovieDatabase
 import com.karetolabs.cinemapp.databinding.FragmentDetailBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 private const val ARG_PARAM1 = "idFavorite"
 
@@ -41,18 +46,33 @@ class DetailFragment : Fragment() {
             requireActivity().onBackPressed()
         }
 
-        val favorite = FavoriteProvider.favorites[param1?.toInt() ?: 0]
+        // val favorite = FavoriteProvider.favorites[param1?.toInt() ?: 0]
+        CoroutineScope(Dispatchers.IO).launch{
 
-        detailBinding.tvTitle.text = favorite.title
-        detailBinding.tvSummary.text = favorite.summary
+            val database = MovieDatabase.getDatabase(requireActivity()).favoriteDao()
+            val favoriteBD = database.getFavoriteById(param1?:0)
+            val  favorite = Favorite(
+                    favoriteBD?.id,
+                    favoriteBD?.title,
+                    favoriteBD?.urlImage,
+                    favoriteBD?.summary,
+                    favoriteBD?.year,
+                    favoriteBD?.genre,
+                    favoriteBD?.duration,
+                    favoriteBD?.uriImage
+            )
+            withContext(Dispatchers.Main){
+                detailBinding.tvTitle.text = favorite.title
+                detailBinding.tvSummary.text = favorite.summary
 
 
-        if(favorite.uriImage?.isNotEmpty() == true){
-            detailBinding.ivPosterDetail.setImageURI(Uri.parse(favorite.uriImage))
-        }else {
-            Glide.with(requireActivity()).load(favorite.urlImage).into(detailBinding.ivPosterDetail)
+                if(favorite.uriImage?.isNotEmpty() == true){
+                    detailBinding.ivPosterDetail.setImageURI(Uri.parse(favorite.uriImage))
+                }else {
+                    Glide.with(requireActivity()).load(favorite.urlImage).into(detailBinding.ivPosterDetail)
+                }
+            }
         }
-
     }
 
 

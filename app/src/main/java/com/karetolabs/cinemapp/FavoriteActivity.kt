@@ -25,7 +25,7 @@ class FavoriteActivity : AppCompatActivity(), FavoriteFragment.FavoriteFragmentL
     override fun addDetailEvent(item: Favorite) {
         supportFragmentManager.beginTransaction()
             .replace(activityFavoriteBinding.containerFavorite.id,
-            DetailFragment.newInstance(FavoriteProvider.favorites.indexOf(item).toLong()))
+            DetailFragment.newInstance(item.id?:0L))
             .addToBackStack(null)
             .commit()
     }

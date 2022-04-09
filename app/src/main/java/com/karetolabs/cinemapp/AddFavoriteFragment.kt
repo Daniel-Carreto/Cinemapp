@@ -16,8 +16,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.DatePicker
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -26,7 +24,11 @@ import androidx.core.content.FileProvider
 import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.karetolabs.cinemapp.data.local.MovieDatabase
 import com.karetolabs.cinemapp.databinding.FragmentAddFavoriteBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -360,6 +362,21 @@ class AddFavoriteFragment : Fragment() {
     }
 
     private fun saveFavorite(){
+        CoroutineScope(Dispatchers.IO).launch {
+            val database = MovieDatabase.getDatabase(requireActivity())
+            database.favoriteDao().insert(
+                com.karetolabs.cinemapp.data.local.Favorite(
+                    title = fragmentAddFavoriteBinding.tietTitle.text.toString(),
+                    urlImage = fragmentAddFavoriteBinding.tietImage.text.toString(),
+                    summary = fragmentAddFavoriteBinding.tietSummary.text.toString(),
+                    year = fragmentAddFavoriteBinding.tietYear.text.toString(),
+                    genre = fragmentAddFavoriteBinding.tietGenre.text.toString(),
+                    duration = fragmentAddFavoriteBinding.tietDuration.text.toString(),
+                    uriImage = uriFile.toString()
+                )
+            )
+        }
+
         FavoriteProvider.favorites.add(
             Favorite(
                 id = Calendar.getInstance().timeInMillis,
