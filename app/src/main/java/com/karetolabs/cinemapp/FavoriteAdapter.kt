@@ -9,6 +9,7 @@ import com.karetolabs.cinemapp.databinding.ItemFavoriteBinding
 class FavoriteAdapter(val favorites: List<Favorite>) :
     RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 
+    var onItemClickListener: OnItemClickListener<Favorite>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val binding =
@@ -23,7 +24,7 @@ class FavoriteAdapter(val favorites: List<Favorite>) :
         holder.binding.tvYear.text = favorite.year
         Glide.with(holder.binding.root.context).load(favorite.urlImage).into(holder.binding.ivPoster)
         holder.binding.root.setOnClickListener {
-
+            onItemClickListener?.onItemSelected(favorite)
         }
     }
 

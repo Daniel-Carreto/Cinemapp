@@ -21,4 +21,12 @@ class FavoriteActivity : AppCompatActivity(), FavoriteFragment.FavoriteFragmentL
             .addToBackStack(null)
             .commit()
     }
+
+    override fun addDetailEvent(item: Favorite) {
+        supportFragmentManager.beginTransaction()
+            .replace(activityFavoriteBinding.containerFavorite.id,
+            DetailFragment.newInstance(FavoriteProvider.favorites.indexOf(item).toLong()))
+            .addToBackStack(null)
+            .commit()
+    }
 }

@@ -38,6 +38,11 @@ class FavoriteFragment : Fragment() {
             favoriteFragmentListener?.addFavoriteEvent()
         }
         val favoriteAdapter = FavoriteAdapter(FavoriteProvider.favorites)
+        favoriteAdapter.onItemClickListener = object: OnItemClickListener<Favorite>{
+            override fun onItemSelected(item: Favorite) {
+                favoriteFragmentListener?.addDetailEvent(item)
+            }
+        }
         //LinearLayoutManager(requireActivity())
         //LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         //LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, true)
@@ -54,6 +59,7 @@ class FavoriteFragment : Fragment() {
 
     interface FavoriteFragmentListener {
         fun addFavoriteEvent()
+        fun addDetailEvent(favorite: Favorite)
     }
 
 
