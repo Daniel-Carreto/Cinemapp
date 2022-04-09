@@ -44,11 +44,13 @@ class AddFavoriteFragment : Fragment() {
 
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
     private var uriFile: Uri? = null
+    private var uriPath: String? = null
     private var idGenero:Long = 0
 
     private val getGalleryContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             fragmentAddFavoriteBinding.ivPoster.setImageURI(uri)
+            uriFile = uri
             val file = getFile(requireActivity(), uri)
             Log.e("GALLERYCONTENT-ABSOLUTE", file.absolutePath)
             Log.e("GALLERYCONTENT-URI", uri.toString())
@@ -353,6 +355,23 @@ class AddFavoriteFragment : Fragment() {
             return
         }
         showMessage("Exitoso")
+        saveFavorite()
+        requireActivity().onBackPressed()
+    }
+
+    private fun saveFavorite(){
+        FavoriteProvider.favorites.add(
+            Favorite(
+                id = Calendar.getInstance().timeInMillis,
+                title = fragmentAddFavoriteBinding.tietTitle.text.toString(),
+                urlImage = fragmentAddFavoriteBinding.tietImage.text.toString(),
+                summary = fragmentAddFavoriteBinding.tietSummary.text.toString(),
+                year = fragmentAddFavoriteBinding.tietYear.text.toString(),
+                genre = fragmentAddFavoriteBinding.tietGenre.text.toString(),
+                duration = fragmentAddFavoriteBinding.tietDuration.text.toString(),
+                uriImage = uriFile.toString()
+            )
+        )
     }
 
 

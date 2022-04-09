@@ -1,5 +1,6 @@
 package com.karetolabs.cinemapp
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -45,7 +46,12 @@ class DetailFragment : Fragment() {
         detailBinding.tvTitle.text = favorite.title
         detailBinding.tvSummary.text = favorite.summary
 
-        Glide.with(requireActivity()).load(favorite.urlImage).into(detailBinding.ivPosterDetail)
+
+        if(favorite.uriImage?.isNotEmpty() == true){
+            detailBinding.ivPosterDetail.setImageURI(Uri.parse(favorite.uriImage))
+        }else {
+            Glide.with(requireActivity()).load(favorite.urlImage).into(detailBinding.ivPosterDetail)
+        }
 
     }
 

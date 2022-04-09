@@ -1,5 +1,6 @@
 package com.karetolabs.cinemapp
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,12 @@ class FavoriteAdapter(val favorites: List<Favorite>) :
         holder.binding.tvTitle.text = favorite.title
         holder.binding.tvSummary.text = favorite.summary
         holder.binding.tvYear.text = favorite.year
-        Glide.with(holder.binding.root.context).load(favorite.urlImage).into(holder.binding.ivPoster)
+        if(favorite.uriImage?.isNotEmpty() == true){
+            holder.binding.ivPoster.setImageURI(Uri.parse(favorite.uriImage))
+        }else {
+            Glide.with(holder.binding.root.context).load(favorite.urlImage)
+                .into(holder.binding.ivPoster)
+        }
         holder.binding.root.setOnClickListener {
             onItemClickListener?.onItemSelected(favorite)
         }
