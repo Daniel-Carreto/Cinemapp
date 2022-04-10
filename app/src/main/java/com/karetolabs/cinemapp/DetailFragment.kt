@@ -69,7 +69,9 @@ class DetailFragment : Fragment() {
                 if(favorite.uriImage?.isNotEmpty() == true){
                     detailBinding.ivPosterDetail.setImageURI(Uri.parse(favorite.uriImage))
                 }else {
-                    Glide.with(requireActivity()).load(favorite.urlImage).into(detailBinding.ivPosterDetail)
+                    Glide.with(requireActivity()).load(favorite.urlImage)
+                        .placeholder(ContextCompat.getDrawable(requireActivity(),R.drawable.ic_image))
+                        .into(detailBinding.ivPosterDetail)
                 }
             }
         }

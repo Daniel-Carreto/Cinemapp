@@ -3,6 +3,7 @@ package com.karetolabs.cinemapp
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.karetolabs.cinemapp.databinding.ItemFavoriteBinding
@@ -27,6 +28,7 @@ class FavoriteAdapter(val favorites: List<Favorite>) :
             holder.binding.ivPoster.setImageURI(Uri.parse(favorite.uriImage))
         }else {
             Glide.with(holder.binding.root.context).load(favorite.urlImage)
+                .placeholder(ContextCompat.getDrawable(holder.binding.ivPoster.context,R.drawable.ic_image))
                 .into(holder.binding.ivPoster)
         }
         holder.binding.root.setOnClickListener {
