@@ -11,12 +11,17 @@
         <entry key="..\:/Users/dany_/Documents/KaretoLabs/Cinemapp/app/src/main/res/layout/activity_main.xml" value="0.3921875" />
         <entry key="..\:/Users/dany_/Documents/KaretoLabs/Cinemapp/app/src/main/res/layout/fragment_add_favorite.xml" value="0.33" />
         <entry key="..\:/Users/dany_/Documents/KaretoLabs/Cinemapp/app/src/main/res/layout/fragment_detail.xml" value="0.39739583333333334" />
+        <entry key="..\:/Users/dany_/Documents/KaretoLabs/Cinemapp/app/src/main/res/layout/fragment_discover.xml" value="0.21944444444444444" />
         <entry key="..\:/Users/dany_/Documents/KaretoLabs/Cinemapp/app/src/main/res/layout/fragment_favorite.xml" value="0.1" />
-        <entry key="..\:/Users/dany_/Documents/KaretoLabs/Cinemapp/app/src/main/res/layout/item_favorite.xml" value="0.75" />
+        <entry key="..\:/Users/dany_/Documents/KaretoLabs/Cinemapp/app/src/main/res/layout/item_favorite.xml" value="0.25" />
         <entry key="..\:/Users/dany_/Documents/KaretoLabs/Cinemapp/app/src/main/res/layout/item_genero.xml" value="0.39739583333333334" />
         <entry key="..\:/Users/dany_/Documents/KaretoLabs/Cinemapp/app/src/main/res/menu/add_favorite_menu.xml" value="0.4153846153846154" />
       </map>
     </option>
+  </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/karetolabs/cinemapp/data/network/DiscoverResponse.kt" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/karetolabs/cinemapp/data/network/Result.kt" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
