@@ -14,4 +14,8 @@
     <string name="hint_user">Usuario</string>
     <string name="hint_password">Contrasenia</string>
     <string name="hint_login">Iniciar Sesion</string>
+    <string name="nav_favorite_action">Favoritos</string>
+    <string name="nav_discover_action">TopRated</string>
+    <string name="nav_top_action">Discover</string>
+    <string name="nav_menu_popular">Popular</string>
 </resources>
