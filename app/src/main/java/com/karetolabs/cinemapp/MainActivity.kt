@@ -3,6 +3,7 @@ package com.karetolabs.cinemapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -32,7 +33,6 @@ class MainActivity : AppCompatActivity() {
             R.string.app_name
         )
         drawerToggle.syncState()
-
         activityMainBinding.drawerHome.addDrawerListener(drawerToggle)
         activityMainBinding.naviewHome.getHeaderView(0).findViewById<TextView>(R.id.tvUserName).text = "Daniel"
         val imageview = activityMainBinding.naviewHome.getHeaderView(0).findViewById<ImageView>(R.id.ivAvatar)
@@ -68,7 +68,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         activityMainBinding.btnFavorite.setOnClickListener {
-            startActivity(Intent(this, FavoriteActivity::class.java))
+           // startActivity(Intent(this, FavoriteActivity::class.java))
+            activityMainBinding.drawerHome.openDrawer(Gravity.RIGHT)
         }
 
     }
