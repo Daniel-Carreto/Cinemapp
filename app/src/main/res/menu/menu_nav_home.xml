@@ -18,6 +18,10 @@
             android:id="@+id/actionPopular"
             android:icon="@drawable/ic_baseline_local_movies"
             android:title="@string/nav_menu_popular" />
+        <item
+            android:id="@+id/actionUpcoming"
+            android:icon="@drawable/ic_baseline_local_movies"
+            android:title="@string/nav_menu_upcoming" />
     </group>
 
 </menu>
