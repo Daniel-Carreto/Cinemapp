@@ -2,6 +2,8 @@ package com.karetolabs.cinemapp.login.data
 
 import android.content.SharedPreferences
 
+const val USER_NAME_PREFERENCE = "userName"
+
 class UserPreferencesManager : UserPreferences {
 
     var sharedPreferences: SharedPreferences? = null
@@ -16,11 +18,15 @@ class UserPreferencesManager : UserPreferences {
     }
 
     override fun setUserNameSUccess(username: String) {
-        sharedPreferences?.edit()?.putString("userName", username)?.apply()
+        sharedPreferences?.edit()?.putString(USER_NAME_PREFERENCE, username)?.apply()
     }
 
     override fun isUserLogin(): Boolean {
         return sharedPreferences?.getBoolean("user_login", false) ?: false
+    }
+
+    override fun getStringPreference(key: String): String {
+        return sharedPreferences?.getString(key,"").orEmpty()
     }
 
     override fun clearUserSession() {

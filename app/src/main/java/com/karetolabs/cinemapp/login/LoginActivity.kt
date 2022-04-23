@@ -43,6 +43,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.LoginView {
     override fun onSuccessLogin(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     override fun onErrorLogin(message: String) {

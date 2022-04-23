@@ -1,5 +1,6 @@
 package com.karetolabs.cinemapp.login
 
+import com.karetolabs.cinemapp.login.data.USER_NAME_PREFERENCE
 import com.karetolabs.cinemapp.login.data.UserPreferences
 
 class LoginPresenter(
@@ -7,6 +8,12 @@ class LoginPresenter(
     private val userPreferences: UserPreferences
 ) : LoginContract.LoginPresenter {
 
+
+    init {
+        if(userPreferences.isUserLogin()){
+            loginView.onSuccessLogin("Bienvenido ${userPreferences.getStringPreference(USER_NAME_PREFERENCE)}")
+        }
+    }
 
     override fun login(email: String, password: String) {
         loginView.showLoading()
