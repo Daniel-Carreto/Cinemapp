@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.karetolabs.cinemapp.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.karetolabs.cinemapp.databinding.FragmentPopularBinding
+import com.karetolabs.cinemapp.discover.DiscoverAdapter
 
 class PopularFragment : Fragment() {
 
@@ -23,7 +24,7 @@ class PopularFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        popularBinding = FragmentPopularBinding.inflate(layoutInflater,container, false)
+        popularBinding = FragmentPopularBinding.inflate(layoutInflater, container, false)
         return popularBinding.root
     }
 
@@ -34,13 +35,30 @@ class PopularFragment : Fragment() {
             PopularViewModelFactory(5)
         )[PopularViewModel::class.java]
 
-        popularViewModel?.contadorLiveData?.observe(requireActivity()){
+        popularViewModel?.contadorLiveData?.observe(requireActivity()) {
             popularBinding.tvContador.text = it.toString()
+        }
+        popularBinding.swrPopularMovies.setOnRefreshListener {
+            //showLoading()
+            popularViewModel?.fetchPopularMovies()
+        }
+        popularViewModel?.fetchPopularMovies()
+        //showloading()
+        popularViewModel?.popularMoviesLiveData?.observe(requireActivity()) { movies ->
+            //hideLoading
+            popularBinding.swrPopularMovies.isRefreshing = false
+            movies?.let { movieList ->
+                val popularAdapter = DiscoverAdapter(movieList)
+                popularBinding.rvPopular.apply {
+                    layoutManager = LinearLayoutManager(requireActivity())
+                    adapter = popularAdapter
+                }
+            }
         }
 
         //popularBinding.tvContador.text = ((popularViewModel?.inicializador?: 0) + (popularViewModel?.contador?:0)).toString()//.toString()///contador.toString()
         popularBinding.tvContador.setOnClickListener {
-           // contador++
+            // contador++
             popularViewModel?.actualizarContador()
             //popularBinding.tvContador.text = ((popularViewModel?.inicializador?: 0) + (popularViewModel?.contador?:0)).toString()
         }
