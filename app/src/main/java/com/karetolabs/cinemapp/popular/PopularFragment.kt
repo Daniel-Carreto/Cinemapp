@@ -1,12 +1,14 @@
 package com.karetolabs.cinemapp.popular
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.karetolabs.cinemapp.R
 import com.karetolabs.cinemapp.databinding.FragmentPopularBinding
 import com.karetolabs.cinemapp.discover.DiscoverAdapter
 
@@ -18,6 +20,29 @@ class PopularFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_popular_fragment, menu)
+        val searchMenuItem: MenuItem? = menu.findItem(R.id.action_search)
+        val manager = requireActivity().getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView: SearchView? = searchMenuItem?.actionView as? SearchView
+        searchView?.setSearchableInfo(manager.getSearchableInfo(activity?.componentName))
+        searchView?.queryHint = "Escribe el titulo"
+        searchView?.isIconified = true
+        searchView?.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                println("$query")
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                println("$newText")
+                return false
+            }
+        })
     }
 
     override fun onCreateView(
