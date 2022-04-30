@@ -8,6 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.bumptech.glide.Glide
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import com.karetolabs.cinemapp.TopRated.TopRatedFragment
 import com.karetolabs.cinemapp.databinding.ActivityMainBinding
 import com.karetolabs.cinemapp.discover.DiscoverFragment
@@ -17,12 +20,14 @@ import com.karetolabs.cinemapp.upcomming.UpComingFragment
 class MainActivity : AppCompatActivity() {
 
     private lateinit var activityMainBinding: ActivityMainBinding
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
         setSupportActionBar(activityMainBinding.toolbarHome)
+        firebaseAnalytics = Firebase.analytics
         supportActionBar?.apply {
             setDisplayShowHomeEnabled(true)
         }
@@ -75,8 +80,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         activityMainBinding.btnFavorite.setOnClickListener {
-           // startActivity(Intent(this, FavoriteActivity::class.java))
-            activityMainBinding.drawerHome.openDrawer(Gravity.RIGHT)
+            startActivity(Intent(this, FavoriteActivity::class.java))
+            //activityMainBinding.drawerHome.openDrawer(Gravity.RIGHT)
+            firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM , Bundle().apply {
+                putString(FirebaseAnalytics.Param.ITEM_ID, "12")
+                putString(FirebaseAnalytics.Param.ITEM_NAME, "favorite")
+                putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image")
+
+            })
+
+
         }
 
     }
