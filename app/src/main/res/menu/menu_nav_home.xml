@@ -9,10 +9,12 @@
         <item
             android:id="@+id/actionTopRated"
             android:icon="@drawable/ic_baseline_thumb_up"
+            android:visible="false"
             android:title="@string/nav_top_action" />
         <item
             android:id="@+id/actionDiscover"
             android:icon="@drawable/ic_baseline_trending_up"
+            android:visible="false"
             android:title="@string/nav_discover_action" />
         <item
             android:id="@+id/actionPopular"
@@ -20,6 +22,7 @@
             android:title="@string/nav_menu_popular" />
         <item
             android:id="@+id/actionUpcoming"
+            android:visible="false"
             android:icon="@drawable/ic_baseline_local_movies"
             android:title="@string/nav_menu_upcoming" />
     </group>

@@ -79,6 +79,29 @@ class MainActivity : AppCompatActivity() {
             false
         }
 
+        activityMainBinding.bottomNavigationView.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.actionTopRated -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(activityMainBinding.fcvSection.id,
+                            TopRatedFragment())
+                        .commit()
+                }
+                R.id.actionUpcoming -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(activityMainBinding.fcvSection.id,
+                            UpComingFragment())
+                        .commit()
+                }
+                R.id.actionDiscover -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(activityMainBinding.fcvSection.id,
+                            DiscoverFragment())
+                        .commit()
+                }
+            }
+            false
+        }
         activityMainBinding.btnFavorite.setOnClickListener {
             startActivity(Intent(this, FavoriteActivity::class.java))
             //activityMainBinding.drawerHome.openDrawer(Gravity.RIGHT)
