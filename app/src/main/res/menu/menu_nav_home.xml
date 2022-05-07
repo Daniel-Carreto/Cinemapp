@@ -25,6 +25,11 @@
             android:visible="false"
             android:icon="@drawable/ic_baseline_local_movies"
             android:title="@string/nav_menu_upcoming" />
+        <item
+            android:id="@+id/actionPosters"
+            android:icon="@drawable/ic_image"
+            android:title="@string/nav_menu_posters" />
+
     </group>
 
 </menu>

@@ -15,6 +15,7 @@ import com.karetolabs.cinemapp.TopRated.TopRatedFragment
 import com.karetolabs.cinemapp.databinding.ActivityMainBinding
 import com.karetolabs.cinemapp.discover.DiscoverFragment
 import com.karetolabs.cinemapp.popular.PopularFragment
+import com.karetolabs.cinemapp.poster.PosterFragment
 import com.karetolabs.cinemapp.upcomming.UpComingFragment
 
 class MainActivity : AppCompatActivity() {
@@ -72,6 +73,12 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction()
                         .replace(activityMainBinding.fcvSection.id,
                             UpComingFragment())
+                        .commit()
+                }
+                R.id.actionPosters -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(activityMainBinding.fcvSection.id,
+                            PosterFragment())
                         .commit()
                 }
             }
