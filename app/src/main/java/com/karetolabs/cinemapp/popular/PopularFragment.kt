@@ -32,9 +32,11 @@ class PopularFragment : Fragment() {
         searchView?.setSearchableInfo(manager.getSearchableInfo(activity?.componentName))
         searchView?.queryHint = "Escribe el titulo"
         searchView?.isIconified = true
-        searchView?.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                println("$query")
+                if (query?.isEmpty() == true) return false
+                showLoading()
+                popularViewModel?.fetchSearchMovie(query.orEmpty())
                 return false
             }
 
@@ -68,9 +70,9 @@ class PopularFragment : Fragment() {
             popularViewModel?.fetchPopularMovies()
         }
         popularViewModel?.fetchPopularMovies()
-        //showloading()
+        showLoading()
         popularViewModel?.popularMoviesLiveData?.observe(requireActivity()) { movies ->
-            //hideLoading
+            hideLoading()
             popularBinding.swrPopularMovies.isRefreshing = false
             movies?.let { movieList ->
                 val popularAdapter = DiscoverAdapter(movieList)
@@ -87,6 +89,14 @@ class PopularFragment : Fragment() {
             popularViewModel?.actualizarContador()
             //popularBinding.tvContador.text = ((popularViewModel?.inicializador?: 0) + (popularViewModel?.contador?:0)).toString()
         }
+    }
+
+    fun showLoading() {
+        popularBinding.progressPopular.visibility = View.VISIBLE
+    }
+
+    fun hideLoading() {
+        popularBinding.progressPopular.visibility = View.GONE
     }
 
     companion object {

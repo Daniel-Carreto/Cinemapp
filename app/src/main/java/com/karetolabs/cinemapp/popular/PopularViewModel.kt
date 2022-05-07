@@ -54,5 +54,32 @@ class PopularViewModel(
         }
     }
 
+    fun fetchSearchMovie(title: String){
+        viewModelScope.launch {
+            val query = title.replace(" ","%20")
+
+            val response = NetworkConnection
+                .provideApi(DiscoverService::class.java)?.discoverList(
+                    "https://api.themoviedb.org/3/search/movie?api_key=568ff4df19633325b978ea1b75fe2290&language=en-US&query=$query"
+                )
+
+            val movies = response?.results?.map { movieResponse ->
+                Movie(
+                    id = movieResponse.id,
+                    title = movieResponse.title,
+                    posterPath = movieResponse.posterPath,
+                    summary = movieResponse.overview,
+                    date = movieResponse.releaseDate
+                )
+            }
+            popularMoviesMutableLiveData.postValue(movies)
+            // withContext(Dispatchers.Main) {
+            //topRatedView.showTopRated(movies?: arrayListOf())
+            // topRatedView.hideLoading()
+            // }
+        }
+    }
+
+
 
 }
