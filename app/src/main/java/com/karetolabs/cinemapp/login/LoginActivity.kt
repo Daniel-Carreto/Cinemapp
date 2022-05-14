@@ -1,10 +1,17 @@
 package com.karetolabs.cinemapp.login
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 import com.karetolabs.cinemapp.MainActivity
 import com.karetolabs.cinemapp.databinding.ActivityLoginBinding
 import com.karetolabs.cinemapp.login.data.PreferencesProvider
@@ -30,7 +37,29 @@ class LoginActivity : AppCompatActivity(), LoginContract.LoginView {
                 loginBinding.tietPassword.text.toString()
             )
         }
+        createChannel()
+
+        Firebase.messaging.subscribeToTopic("estrenos")
+        Firebase.messaging.unsubscribeFromTopic("estrenos")
+
+        Firebase.messaging.token.addOnSuccessListener() {
+            println(it)
+        }
     }
+
+    private fun createChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notiicationChannel =
+                NotificationChannel("cinemapp", "cinemapp", NotificationManager.IMPORTANCE_HIGH)
+            notiicationChannel.enableLights(true)
+            notiicationChannel.enableVibration(true)
+            notiicationChannel.lightColor = Color.BLUE
+            (getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager)?.createNotificationChannel(
+                notiicationChannel
+            )
+        }
+    }
+
 
     override fun showLoading() {
         loginBinding.progressLogin.visibility = View.VISIBLE
