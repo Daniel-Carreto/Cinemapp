@@ -30,6 +30,11 @@
             android:icon="@drawable/ic_image"
             android:title="@string/nav_menu_posters" />
 
+        <item
+            android:id="@+id/actionLink"
+            android:icon="@drawable/ic_baseline_language"
+            android:title="@string/nav_menu_link" />
+
     </group>
 
 </menu>

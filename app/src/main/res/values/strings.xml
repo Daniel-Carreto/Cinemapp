@@ -20,4 +20,5 @@
     <string name="nav_menu_popular">Popular</string>
     <string name="nav_menu_upcoming">Estrenos</string>
     <string name="nav_menu_posters">Posters</string>
+    <string name="nav_menu_link">Ir a sitio web</string>
 </resources>

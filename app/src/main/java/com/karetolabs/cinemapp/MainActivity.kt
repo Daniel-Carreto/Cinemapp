@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -11,6 +13,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.browser.customtabs.CustomTabColorSchemeParams
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.bumptech.glide.Glide
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -98,6 +103,10 @@ class MainActivity : AppCompatActivity() {
                         )
                         .commit()
                 }
+
+                R.id.actionLink -> {
+                    openInChromeTab()
+                }
             }
             activityMainBinding.drawerHome.closeDrawers()
             false
@@ -153,6 +162,21 @@ class MainActivity : AppCompatActivity() {
             IntentFilter("Notification_Action")
         )
 
+    }
+
+    private fun openInChromeTab() {
+        try {
+            val builder = CustomTabsIntent.Builder()
+            val url = "https://developer.android.com/"
+            val color = Color.parseColor("#00FF00")
+            val defaultParamsColors = CustomTabColorSchemeParams.Builder()
+                .setToolbarColor(ContextCompat.getColor(this, R.color.primary_color))
+                .build()
+            builder.setDefaultColorSchemeParams(defaultParamsColors)
+            builder.build().launchUrl(this, Uri.parse(url))
+        } catch (exception: Exception) {
+            //Lanzar al navegador normal o mencionar que no es compatible
+        }
     }
 
     private fun receiver() = object: BroadcastReceiver() {
