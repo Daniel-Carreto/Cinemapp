@@ -1,11 +1,19 @@
 package com.karetolabs.cinemapp.upcomming
 
+import android.graphics.Color
 import android.opengl.Visibility
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.UnderlineSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.karetolabs.cinemapp.R
@@ -55,6 +63,18 @@ class UpComingFragment : Fragment() {
         fragmentUpComingBinding.swipeRefresh.setOnRefreshListener {
             viewModel?.getMovies()
         }
+        val content = SpannableString("5545362718 Telefono de emergencia")
+        //content.setSpan(UnderlineSpan(), 0, 10, 0)
+        content.setSpan(ForegroundColorSpan(Color.BLUE), 0,10, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        //fragmentUpComingBinding.textView10.setText(content)
+
+        val contentHTML = "<b>Hola</b> <i>Mundo</i>  <font color='red'>simple</font>."
+        val formatText = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(contentHTML, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        } else {
+            Html.fromHtml(contentHTML)
+        }
+        fragmentUpComingBinding.textView10.text = formatText
     }
 
 }
