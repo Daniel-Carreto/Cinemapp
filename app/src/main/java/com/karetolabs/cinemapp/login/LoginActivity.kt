@@ -8,10 +8,12 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.ktx.messaging
+import com.karetolabs.cinemapp.BuildConfig
 import com.karetolabs.cinemapp.MainActivity
 import com.karetolabs.cinemapp.databinding.ActivityLoginBinding
 import com.karetolabs.cinemapp.login.data.PreferencesProvider
@@ -45,6 +47,9 @@ class LoginActivity : AppCompatActivity(), LoginContract.LoginView {
         Firebase.messaging.token.addOnSuccessListener() {
             println(it)
         }
+
+        //Log.d("BASE_URL+", "++++++"+BuildConfig.BASE_URL)
+
     }
 
     private fun createChannel() {

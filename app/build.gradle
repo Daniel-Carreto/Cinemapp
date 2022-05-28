@@ -42,6 +42,36 @@ android {
     viewBinding {
          enabled = true
     }
+
+    flavorDimensions "default"
+    productFlavors {
+        prod {
+            applicationId "com.mobilestudio.cinemapp"
+            buildConfigField "String", "BASE_URL", '"http//:www.google.com"'
+            buildConfigField "String", "so", '"google"'
+        }
+        qa {
+            applicationId "com.mobilestudio.cinemapp.qa"
+            buildConfigField "String",  "BASE_URL" , '"http//:www.googleqa.com"'
+            buildConfigField "String", "so", '"huawei"'
+        }
+        dev {
+            applicationId "com.mobilestudio.cinemapp.dev"
+            buildConfigField "String",  "BASE_URL"  ,'"http//:www.googledev.com"'
+            buildConfigField "String", "so", '"dev"'
+        }
+    }
+
+    sourceSets {
+//            prod {
+//                java.srcDirs  = ['src/main/java']
+//            }
+//            dev {
+//                java.srcDirs = ['src/main/java']
+//            }
+    }
+
+
 }
 
 dependencies {
@@ -82,6 +112,7 @@ dependencies {
 
     //Chrome tabs
     implementation "androidx.browser:browser:1.4.0"
+    //prodImplementation "androidx.browser:browser:1.4.0"
 
 
     testImplementation 'junit:junit:4.13.2'
