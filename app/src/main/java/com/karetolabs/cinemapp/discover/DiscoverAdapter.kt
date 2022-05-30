@@ -5,6 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.karetolabs.cinemapp.databinding.ItemFavoriteBinding
+import com.karetolabs.cinemapp.util.isEmailValid
+import com.karetolabs.cinemapp.util.loadUrl
+import com.karetolabs.cinemapp.util.showAlert
 
 class DiscoverAdapter(val movies: List<Movie>) :
     RecyclerView.Adapter<DiscoverAdapter.DiscoverViewHolder>() {
@@ -18,9 +21,7 @@ class DiscoverAdapter(val movies: List<Movie>) :
     override fun onBindViewHolder(holder: DiscoverViewHolder, position: Int) {
         val movie = movies[position]
         holder.binding.tvTitle.text = movie.title
-        Glide.with(holder.binding.root.context)
-            .load("https://image.tmdb.org/t/p/w200" + movie.posterPath)
-            .into(holder.binding.ivPoster)
+        holder.binding.ivPoster.loadUrl("https://image.tmdb.org/t/p/w200" + movie.posterPath)
         holder.binding.tvYear.text = movie.date
         holder.binding.tvSummary.text = movie.summary
 

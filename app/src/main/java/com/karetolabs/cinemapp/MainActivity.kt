@@ -11,13 +11,11 @@ import android.os.Bundle
 import android.view.Gravity
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.bumptech.glide.Glide
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
@@ -27,6 +25,8 @@ import com.karetolabs.cinemapp.discover.DiscoverFragment
 import com.karetolabs.cinemapp.popular.PopularFragment
 import com.karetolabs.cinemapp.poster.PosterFragment
 import com.karetolabs.cinemapp.upcomming.UpComingFragment
+import com.karetolabs.cinemapp.util.loadUrl
+import com.karetolabs.cinemapp.util.showAlert
 
 class MainActivity : AppCompatActivity() {
 
@@ -55,9 +55,7 @@ class MainActivity : AppCompatActivity() {
             .findViewById<TextView>(R.id.tvUserName).text = "Daniel"
         val imageview =
             activityMainBinding.naviewHome.getHeaderView(0).findViewById<ImageView>(R.id.ivAvatar)
-        Glide.with(this)
-            .load("https://images-eu.ssl-images-amazon.com/images/I/5117ZW5600L.__AC_SX300_SY300_QL70_ML2_.jpg")
-            .into(imageview)
+        imageview.loadUrl("https://images-eu.ssl-images-amazon.com/images/I/5117ZW5600L.__AC_SX300_SY300_QL70_ML2_.jpg")
         activityMainBinding.naviewHome.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.actionDiscover -> {
@@ -182,8 +180,7 @@ class MainActivity : AppCompatActivity() {
     private fun receiver() = object: BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if(intent?.hasExtra("bodyAction") == true) {
-                Toast.makeText(this@MainActivity, intent.getStringExtra("bodyAction"),
-                    Toast.LENGTH_SHORT).show()
+                showAlert(intent.getStringExtra("bodyAction"))
                 //activityMainBinding.btnFavorite.text = intent.getStringExtra("bodyAction")
             }
         }
