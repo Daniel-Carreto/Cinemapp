@@ -35,6 +35,11 @@
             android:icon="@drawable/ic_baseline_language"
             android:title="@string/nav_menu_link" />
 
+        <item
+            android:id="@+id/actionPlaces"
+            android:icon="@drawable/ic_baseline_local_movies"
+            android:title="@string/nav_menu_places" />
+
     </group>
 
 </menu>

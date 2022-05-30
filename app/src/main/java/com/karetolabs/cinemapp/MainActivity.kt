@@ -20,6 +20,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
 import com.karetolabs.cinemapp.TopRated.TopRatedFragment
+import com.karetolabs.cinemapp.complejos.MapsActivity
 import com.karetolabs.cinemapp.databinding.ActivityMainBinding
 import com.karetolabs.cinemapp.discover.DiscoverFragment
 import com.karetolabs.cinemapp.popular.PopularFragment
@@ -104,6 +105,10 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.actionLink -> {
                     openInChromeTab()
+                }
+
+                R.id.actionPlaces -> {
+                    startActivity(Intent(this, MapsActivity::class.java))
                 }
             }
             activityMainBinding.drawerHome.closeDrawers()
