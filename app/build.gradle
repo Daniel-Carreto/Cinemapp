@@ -5,6 +5,7 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -44,7 +45,7 @@ android {
          enabled = true
     }
 
-    flavorDimensions "default"
+ /*   flavorDimensions "default"
     productFlavors {
         prod {
             applicationId "com.mobilestudio.cinemapp"
@@ -71,7 +72,7 @@ android {
                 java.srcDirs = ['src/main/java']
             }
     }
-
+*/
 
 }
 
@@ -117,6 +118,9 @@ dependencies {
     implementation "androidx.browser:browser:1.4.0"
     //prodImplementation "androidx.browser:browser:1.4.0"
 
+    //navigation components
+    implementation "androidx.navigation:navigation-fragment-ktx:2.4.2"
+    implementation "androidx.navigation:navigation-ui-ktx:2.4.2"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

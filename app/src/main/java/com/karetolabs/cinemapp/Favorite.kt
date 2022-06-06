@@ -54,6 +54,14 @@ class FavoriteProvider{
                 "2016",
                 "Comic",
                 "170"),
+            Favorite(null,
+                "Batman v Superman",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9lqKg-B14vhvfGuuy6Rj5NH7yrtGWiR2WvQ&usqp=CAU",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque, leo sed feugiat auctor, lacus neque fringilla nibh, a blandit lacus dolor et arcu. Nam viverra magna vel quam faucibus, vitae dictum diam molestie. Integer sed augue ut nulla interdum mattis. Fusce sodales, dolor eg",
+                "2016",
+                "Comic",
+                "170"),
+
 
         )
     }

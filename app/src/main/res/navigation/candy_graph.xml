@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/candy_graph"
+    app:startDestination="@id/loginCandyFragment">
+
+    <action
+        android:id="@+id/global_action"
+        app:destination="@id/homeCandyFragment"/>
+
+    <fragment
+        android:id="@+id/loginCandyFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.login.LoginCandyFragment"
+        android:label="LoginCandyFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginCandyFragment_to_registerNameFragment"
+            app:destination="@id/registerNameFragment" />
+        <action
+            android:id="@+id/action_loginCandyFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_loginCandyFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerNameFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.register.RegisterNameFragment"
+        android:label="fragment_register_name"
+        tools:layout="@layout/fragment_register_name" />
+    <dialog
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.login.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.register.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_homeCandyFragment"
+            app:destination="@id/homeCandyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.register.AddressFragment"
+        android:label="fragment_address"
+        tools:layout="@layout/fragment_address" >
+        <action
+            android:id="@+id/action_addressFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.register.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapsFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/creditCardFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.register.CreditCardFragment"
+        android:label="fragment_credit_card"
+        tools:layout="@layout/fragment_credit_card" >
+        <action
+            android:id="@+id/action_creditCardFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_creditCardFragment_to_loginCandyFragment4"
+            app:destination="@id/loginCandyFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@+id/loginCandyFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.login.ConfirmationFragment"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation" >
+        <action
+            android:id="@+id/action_confirmationFragment_to_creditCardFragment"
+            app:destination="@id/creditCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeCandyFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.home.HomeCandyFragment"
+        android:label="fragment_home_candy"
+        tools:layout="@layout/fragment_home_candy" >
+        <deepLink app:uri="www.example.com/{detailId}"/>
+        <action
+            android:id="@+id/action_homeCandyFragment_to_detailCandyFragment"
+            app:destination="@id/detailCandyFragment" />
+        <action
+            android:id="@+id/action_homeCandyFragment_to_favoriteCandyFragment"
+            app:destination="@id/favoriteCandyFragment" />
+        <action
+            android:id="@+id/action_homeCandyFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeCandyFragment_to_bagFragment"
+            app:destination="@id/bagFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteCandyFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.home.FavoriteCandyFragment"
+        android:label="fragment_favorite_candy"
+        tools:layout="@layout/fragment_favorite_candy" >
+        <deepLink app:uri="myapp://cinemapp.com/favorites/{id}"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailCandyFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.home.DetailCandyFragment"
+        android:label="fragment_detail_candy"
+        tools:layout="@layout/fragment_detail_candy" >
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.home.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/bagFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.home.BagFragment"
+        android:label="fragment_bag"
+        tools:layout="@layout/fragment_bag" >
+        <argument android:name="checkoutArg"
+            app:argType="integer"
+            android:defaultValue="3"/>
+        <action
+            android:id="@+id/action_bagFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.karetolabs.cinemapp.dulceria.home.CheckoutFragment"
+        android:label="fragment_checkout"
+        tools:layout="@layout/fragment_checkout" />
+</navigation>
