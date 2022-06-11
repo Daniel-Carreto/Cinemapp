@@ -23,16 +23,16 @@ class HomeCandyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        view.findViewById<TextView>(R.id.tvHome).setOnClickListener {
-//
-//            val checkoutItem = 7
-//            val action = HomeCandyFragmentDirections.actionHomeCandyFragmentToBagFragment(checkoutItem)
-//            //findNavController().navigate(R.id.action_homeCandyFragment_to_bagFragment)
-//            findNavController().navigate(action)
-//        }
-
         view.findViewById<TextView>(R.id.tvHome).setOnClickListener {
-           findNavController().navigate(R.id.action_homeCandyFragment_to_favoriteCandyFragment)
+
+            val checkoutItem = 7
+            val action = HomeCandyFragmentDirections.actionHomeCandyFragmentToBagFragment(checkoutItem)
+            //findNavController().navigate(R.id.action_homeCandyFragment_to_bagFragment)
+            findNavController().navigate(action)
         }
+
+//        view.findViewById<TextView>(R.id.tvHome).setOnClickListener {
+//           findNavController().navigate(R.id.action_homeCandyFragment_to_favoriteCandyFragment)
+//        }
     }
 }
