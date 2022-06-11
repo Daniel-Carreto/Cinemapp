@@ -23,6 +23,7 @@ import com.karetolabs.cinemapp.TopRated.TopRatedFragment
 import com.karetolabs.cinemapp.complejos.MapsActivity
 import com.karetolabs.cinemapp.databinding.ActivityMainBinding
 import com.karetolabs.cinemapp.discover.DiscoverFragment
+import com.karetolabs.cinemapp.dulceria.DulceriaActivity
 import com.karetolabs.cinemapp.popular.PopularFragment
 import com.karetolabs.cinemapp.poster.PosterFragment
 import com.karetolabs.cinemapp.upcomming.UpComingFragment
@@ -109,6 +110,9 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.actionPlaces -> {
                     startActivity(Intent(this, MapsActivity::class.java))
+                }
+                R.id.actionCandy -> {
+                    DulceriaActivity.launch(this, Pair("Dulce",2.0), Pair("Dulce",2.0))
                 }
             }
             activityMainBinding.drawerHome.closeDrawers()

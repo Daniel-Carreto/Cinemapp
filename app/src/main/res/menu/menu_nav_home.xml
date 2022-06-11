@@ -40,6 +40,11 @@
             android:icon="@drawable/ic_baseline_local_movies"
             android:title="@string/nav_menu_places" />
 
+        <item
+            android:id="@+id/actionCandy"
+            android:icon="@drawable/ic_baseline_trending_up"
+            android:title="@string/nav_menu_candy" />
+
     </group>
 
 </menu>
