@@ -31,6 +31,10 @@ class HomeCandyFragment : Fragment() {
             findNavController().navigate(action)
         }
 
+        view.findViewById<TextView>(R.id.tvSettings).setOnClickListener {
+            findNavController().navigate(R.id.action_homeCandyFragment_to_settingsFragment)
+        }
+
 //        view.findViewById<TextView>(R.id.tvHome).setOnClickListener {
 //           findNavController().navigate(R.id.action_homeCandyFragment_to_favoriteCandyFragment)
 //        }
