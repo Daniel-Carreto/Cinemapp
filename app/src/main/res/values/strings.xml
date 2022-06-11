@@ -23,6 +23,7 @@
     <string name="nav_menu_link">Ir a sitio web</string>
     <string name="nav_menu_places">Complejos</string>
     <string name="nav_menu_candy">Dulceria</string>
+    <string name="nav_menu_pokemon">Pokemon</string>
     <string name="short_favorites">Ir a favoritos</string>
     <string name="long_favorites">Ir a seccion favoritos</string>
 </resources>

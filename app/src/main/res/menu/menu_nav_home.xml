@@ -45,6 +45,11 @@
             android:icon="@drawable/ic_baseline_trending_up"
             android:title="@string/nav_menu_candy" />
 
+        <item
+            android:id="@+id/actionPokemon"
+            android:icon="@drawable/ic_baseline_thumb_up"
+            android:title="@string/nav_menu_pokemon" />
+
     </group>
 
 </menu>

@@ -24,6 +24,7 @@ import com.karetolabs.cinemapp.complejos.MapsActivity
 import com.karetolabs.cinemapp.databinding.ActivityMainBinding
 import com.karetolabs.cinemapp.discover.DiscoverFragment
 import com.karetolabs.cinemapp.dulceria.DulceriaActivity
+import com.karetolabs.cinemapp.pokemon.presentation.search.SearchActivity
 import com.karetolabs.cinemapp.popular.PopularFragment
 import com.karetolabs.cinemapp.poster.PosterFragment
 import com.karetolabs.cinemapp.upcomming.UpComingFragment
@@ -113,6 +114,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.actionCandy -> {
                     DulceriaActivity.launch(this, Pair("Dulce",2.0), Pair("Dulce",2.0))
+                }
+                R.id.actionPokemon -> {
+                    SearchActivity.launch(this)
                 }
             }
             activityMainBinding.drawerHome.closeDrawers()
