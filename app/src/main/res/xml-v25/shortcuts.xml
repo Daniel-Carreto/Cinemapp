@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <shortcut
+        android:shortcutId="favorite_shortcut"
+        android:enabled="true"
+        android:shortcutShortLabel="@string/short_favorites"
+        android:shortcutLongLabel="@string/long_favorites"
+        android:shortcutDisabledMessage="@string/short_favorites"
+        android:icon="@drawable/card_image">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="myapp://cinemapp.com/favorites/5"/>
+    </shortcut>
+
+
+
+</shortcuts>

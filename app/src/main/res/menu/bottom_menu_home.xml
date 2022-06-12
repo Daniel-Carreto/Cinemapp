@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/actionTopRated"
+        android:icon="@drawable/ic_baseline_thumb_up"
+        android:title="@string/nav_top_action" />
+    <item
+        android:id="@+id/actionDiscover"
+        android:icon="@drawable/ic_baseline_trending_up"
+        android:title="@string/nav_discover_action" />
+    <item
+        android:id="@+id/actionUpcoming"
+        android:icon="@drawable/ic_baseline_local_movies"
+        android:title="@string/nav_menu_upcoming" />
+</menu>

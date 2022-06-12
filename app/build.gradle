@@ -2,13 +2,17 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.karetolabs.cinemapp"
+        applicationId "com.mobilestudio.cinemapp"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -40,6 +44,36 @@ android {
     viewBinding {
          enabled = true
     }
+
+ /*   flavorDimensions "default"
+    productFlavors {
+        prod {
+            applicationId "com.mobilestudio.cinemapp"
+            buildConfigField "String", "BASE_URL", '"http//:www.google.com"'
+            buildConfigField "String", "so", '"google"'
+        }
+        qa {
+            applicationId "com.mobilestudio.cinemapp.qa"
+            buildConfigField "String",  "BASE_URL" , '"http//:www.googleqa.com"'
+            buildConfigField "String", "so", '"huawei"'
+        }
+        dev {
+            applicationId "com.mobilestudio.cinemapp.dev"
+            buildConfigField "String",  "BASE_URL"  ,'"http//:www.googledev.com"'
+            buildConfigField "String", "so", '"dev"'
+        }
+    }
+
+    sourceSets {
+            prod {
+                java.srcDirs  = ['src/main/java']
+            }
+            dev {
+                java.srcDirs = ['src/main/java']
+            }
+    }
+*/
+
 }
 
 dependencies {
@@ -51,6 +85,8 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation 'com.github.bumptech.glide:glide:4.13.0'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 
     //Coroutines
@@ -72,6 +108,19 @@ dependencies {
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
 
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:29.3.1')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+
+    //Chrome tabs
+    implementation "androidx.browser:browser:1.4.0"
+    //prodImplementation "androidx.browser:browser:1.4.0"
+
+    //navigation components
+    implementation "androidx.navigation:navigation-fragment-ktx:2.4.2"
+    implementation "androidx.navigation:navigation-ui-ktx:2.4.2"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
